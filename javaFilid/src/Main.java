@@ -14,7 +14,14 @@ public class Main {
         try (Scanner scan = new Scanner(fail, "UTF-8")) {
             while (scan.hasNextLine()) {
                 String rida = scan.nextLine();
-                System.out.println(rida);
+                char[] ridaMasiiv=rida.toCharArray();
+                for(char taht:ridaMasiiv){
+                    if(Math.random()>0.10){
+                        taht='a';
+                    }
+                    System.out.print(taht);
+                }
+                System.out.println();
             }
         }
     }
