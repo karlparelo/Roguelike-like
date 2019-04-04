@@ -7,10 +7,8 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) throws Exception {
-        //Automata tester = new Automata();
         //loe("base.txt");
-        //tester.run();
-        muudaRuum(muudaRuum(muudaRuum(teeRuum(25))));
+        muudaRuum(muudaRuum(muudaRuum(teeRuum(20))));
     }
 
     public static void loe(String failinimi) throws Exception {
@@ -35,8 +33,12 @@ public class Main {
         char[][] ruum = new char[suurus][suurus*3];
         for (int i = 0; i < suurus; i++) {
             for (int j = 0; j < suurus*3; j++) {
-                if (Math.random() > 0.70) {
-                    ruum[i][j] = ' ';
+                if(i>0&&i<ruum.length-1&&j>0&&j<ruum[1].length-1) {
+                    if (Math.random() > 0.40) {
+                        ruum[i][j] = ' ';
+                    } else {
+                        ruum[i][j] = '#';
+                    }
                 }
                 else{
                     ruum[i][j] = '#';
@@ -50,8 +52,50 @@ public class Main {
         System.out.println();
         return ruum;
     }
-
+    public static int loeNaabreid(int i,int j,char[][] ruum,int kaugus) {
+        int x = 0;
+        for (int a = 1; a < kaugus + 1; a++) {
+            for (int c = -kaugus; c < kaugus + 1; c++) {
+                for (int d = -kaugus; d < kaugus + 1; d++) {
+                    if (c == 0 && d == 0) {
+                        continue;
+                    }
+                    else {
+                        if (ruum[i + c][j + d] == '#') {
+                            x++;
+                        }
+                    }
+                }
+            }
+        }
+        return x;
+    }
     public static char[][] muudaRuum(char[][] ruum) {
+        for (int i = 1; i < ruum.length-1; i++) {
+            for (int j = 0; j < ruum[1].length-1; j++) {
+                if(i>1&&i<ruum.length-2&&j>1&&j<ruum[1].length-2){
+                    if(loeNaabreid(i,j,ruum,2)<1){
+                        ruum[i][j] = '#';
+                    }
+                }
+                if(i>0&&i<ruum.length-1&&j>0&&j<ruum[1].length-1){
+                    if((loeNaabreid(i,j,ruum,1)>3&&ruum[i][j]=='#')||(loeNaabreid(i,i,ruum,1)>4&&ruum[i][j]==' ')){
+                        ruum[i][j] = '#';
+                    }
+                    else{
+                        ruum[i][j] = ' ';
+                    }
+                }
+                System.out.print(ruum[i][j]);
+            }
+            System.out.println();
+        }
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        return ruum;
+    }
+    public static char[][] muudaaared(char[][] ruum) {
         for (int i = 0; i < ruum.length; i++) {
             for (int j = 0; j < ruum[1].length; j++) {
                 if(i>0&&i<ruum.length-1&&j>0&&j<ruum[1].length-1){
@@ -68,7 +112,7 @@ public class Main {
                     if(ruum[i+1][j+1]=='#'){x++;}
 
                     if(x<4){
-                    ruum[i][j] = ' ';
+                        ruum[i][j] = ' ';
                     }
                 }
                 System.out.print(ruum[i][j]);
