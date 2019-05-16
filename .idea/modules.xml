@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/Roguelike-like.iml" filepath="$PROJECT_DIR$/.idea/Roguelike-like.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Roguelike-like.iml" filepath="$PROJECT_DIR$/Roguelike-like.iml" />
       <module fileurl="file://$PROJECT_DIR$/javaFilid/javaFilid.iml" filepath="$PROJECT_DIR$/javaFilid/javaFilid.iml" />
     </modules>
   </component>

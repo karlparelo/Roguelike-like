@@ -26,7 +26,6 @@ public class Ruum  {
                     valjak[i][j] = '#';
                 }
             }
-            System.out.println();
         }
     }
 
@@ -97,7 +96,6 @@ public class Ruum  {
         return x;
     }
 
-
     public void loeSisse(String failinimi) throws Exception {//loeb failist sisse erinevad mapid kui vaja salvestada
         List<String> teosed = new ArrayList<>();
         File fail = new File(failinimi);
@@ -126,5 +124,20 @@ public class Ruum  {
             System.out.println();
         }
         System.out.println();
+    }
+
+    public void Exit() {
+        while(true){
+            try{
+            int koht = (int)Math.round(Math.random() * valjak[1].length);
+            if((koht != 0) || (koht != valjak[1].length)) {
+                if (valjak[valjak.length - 2][koht] == ' ') {
+                    valjak[valjak.length - 1][koht] = ' ';
+                    break;
+                }
+            }
+        } catch(ArrayIndexOutOfBoundsException e){
+            }
+        }
     }
 }
